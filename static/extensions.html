@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function save(){
+    localStorage.setItem("extension", document.querySelector("textarea").value);
+        alert("Saved successfully!")
+      }
+    </script>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+@import url('https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css');
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+* {
+    font-family: Roboto;
+}
+
+body {
+    margin: 0;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    animation: fadeInAnimation ease-in-out 0.3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.fa-magnifying-glass {
+    color: black;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10%;
+}
+
+.logo {
+    width: 150px;
+}
+
+.logo-wrapper .text {
+    font-size: 75px;
+    font-family: "Roboto";
+    color: #000;
+}
+
+.logo-wrapper h1 {
+    color: black;
+}
+
+footer {
+    margin-top: auto;
+    width: 93%;
+    align-self: center;
+    height: 80px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+footer a,
+footer span {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #000;
+    font-size: 15px;
+}
+
+footer a {
+    cursor: pointer;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+}
+
+.desc {
+    display: flex;
+    justify-content: center;
+}
+
+.desc p {
+    width: 560px;
+    color: rgba(2, 2, 2, 0.514);
+}
+
+textarea {
+    background: none;
+    font-family: inherit;
+    padding: 0px 17px;
+    height: 48px;
+    border: 1px solid rgb(0, 0, 0, .2);
+    color: var(--text-color);
+    border-radius: 3px;
+    outline: none;
+    width: 350px;
+    margin-top: 5px;
+    border-radius: 50px;
+    color: #000;
+}
+
+textarea:focus {
+    border: 1px solid rgba(2, 2, 2, 0.514);
+    border-radius: 6px;
+    animation: fadeInAnimation ease-in-out 0.3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+    </style>
+  </head>
+  <body>
+    <h1>Extension manager</h1>
+    <textarea placeholder="Put the javascript or tampermonkey script here"></textarea>
+    <button onclick="save();">Click this to save the script.</button>
+    <script>
+    document.querySelector("textarea").value = localStorage.getItem("extension");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>New tab</title>
+    <meta name="description" content="New tab of the well know crazy browser" />
+    <meta name="keywords" content="New tab">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF">
+    <meta name="googlebot" content="index, follow, snippet" />
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+@import url('https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css');
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+* {
+    font-family: Roboto;
+}
+
+body {
+    margin: 0;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    animation: fadeInAnimation ease-in-out 0.3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.fa-magnifying-glass {
+    color: black;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10%;
+}
+
+.logo {
+    width: 150px;
+}
+
+.logo-wrapper .text {
+    font-size: 75px;
+    font-family: "Roboto";
+    color: #000;
+}
+
+.logo-wrapper h1 {
+    color: black;
+}
+
+footer {
+    margin-top: auto;
+    width: 93%;
+    align-self: center;
+    height: 80px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+footer a,
+footer span {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #000;
+    font-size: 15px;
+}
+
+footer a {
+    cursor: pointer;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+}
+
+.desc {
+    display: flex;
+    justify-content: center;
+}
+
+.desc p {
+    width: 560px;
+    color: rgba(2, 2, 2, 0.514);
+}
+
+form input {
+    background: none;
+    font-family: inherit;
+    padding: 0px 17px;
+    height: 48px;
+    border: 1px solid rgb(0, 0, 0, .2);
+    color: var(--text-color);
+    border-radius: 3px;
+    outline: none;
+    width: 350px;
+    margin-top: 5px;
+    border-radius: 50px;
+    color: #000;
+}
+
+form input:focus {
+    border: 1px solid rgba(2, 2, 2, 0.514);
+    border-radius: 6px;
+    animation: fadeInAnimation ease-in-out 0.3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+    </style>
+
+</head>
+
+<body>
+
+    <div title="Ultraviolet Logo" class="logo-wrapper">
+        <img class="logo" src="favicon.ico"
+            alt="" />
+        <h1>The crazy browser</h1>
+    </div>
+    <form>
+        <input placeholder="Search the web freely">
+    </form>
+    <center>
+    <a href="redirect.html#aHR0cHM6Ly9jcmF6eXN0dWZmb2ZmaWNpYWwuZ2l0aHViLmlv">Games</a>
+    <a href="extensions.html">Extension manager</a>
+    </center>
+    <script src="uv/uv.bundle.js"></script>
+    <script src="uv/uv.config.js"></script>
+    <script>
+    const form = document.querySelector('form');
+const input = document.querySelector('input');
+
+form.addEventListener('submit', async event => {
+    event.preventDefault();
+    window.navigator.serviceWorker.register('./uv.sw-handler.js', {
+        scope: __uv$config.prefix
+    }).then(() => {
+        let url = input.value.trim();
+        if (!isUrl(url)) url = 'https://search.brave.com/search?q=' + url;
+        else if (!(url.startsWith('https://') || url.startsWith('http://'))) url = 'http://' + url;
+
+
+        window.location.href = __uv$config.prefix + __uv$config.encodeUrl(url);
+    });
+});
+
+function isUrl(val = ''){
+    if (/^http(s?):\/\//.test(val) || val.includes('.') && val.substr(0, 1) !== ' ') return true;
+    return false;
+};
+    </script>
+</body>
+
+</html>
