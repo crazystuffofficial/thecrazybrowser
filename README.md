@@ -20,7 +20,7 @@ cd thecrazybrowser
 
 ```
 npm install @tomphttp/bare-server-node
-npm install http
+npm install node:http
 npm install node-static
 ```
 
