@@ -16,6 +16,12 @@ git clone https://github.com/crazystuffofficial/thecrazybrowser
 cd thecrazybrowser
 ```
 
+<p>Now, install the necessary modules</p>
+
+```
+npm install
+```
+
 <p>Finally, start the repository, and view on port 8080!</p>
 
 ```
