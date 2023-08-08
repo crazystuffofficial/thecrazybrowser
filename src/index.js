@@ -1,13 +1,14 @@
-import createServer from '@tomphttp/bare-server-node';
-import http from 'http';
+import createBareServer from '@tomphttp/bare-server-node';
+import http from 'node:http';
 import nodeStatic from 'node-static';
 
 
 const PORT = process.env.PORT || 8080;
-const bare =  createServer('/bare/');
-const serve = new nodeStatic.Server('static/');
 
+
+const bare = createBareServer('/bare/')
 const server = http.createServer();
+const serve = new nodeStatic.Server('static/');
 
 server.on('request', (req, res) => {
     if (bare.shouldRoute(req)) {
@@ -20,14 +21,13 @@ server.on('request', (req, res) => {
 server.on('upgrade', (req, socket, head) => {
 	if (bare.shouldRoute(req, socket, head)) {
 		bare.routeUpgrade(req, socket, head);
-	}else{
+	} else {
 		socket.end();
 	}
 });
 
-server.on("listening", () => {
-  const addr = server.address();
-  console.log(`Server running on port ${addr.port}`)
+server.on('listening', () => {
+	console.log(`Bare server started on port ${PORT}`)
 });
 
-server.listen({ port: PORT })
+server.listen({ port: PORT });
