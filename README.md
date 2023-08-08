@@ -7,19 +7,19 @@
 <p>First, you have to clone this repository with the below prompt:</p>
 
 ```
-$ git clone https://github.com/crazystuffofficial/thecrazybrowser
+git clone https://github.com/crazystuffofficial/thecrazybrowser
 ```
 
 <p>Now, change the directory to the repository</p>
 
 ```
-$ cd thecrazybrowser
+cd thecrazybrowser
 ```
 
 <p>Finally, start the repository, and view on port 8080!</p>
 
 ```
-$ npm start
+npm start
 ```
 
 <p>Enjoy!!!</p>
@@ -28,11 +28,11 @@ $ npm start
 <p>First, pull the image.</p>
 
 ```
-$ docker pull ghcr.io/crazystuffofficial/thecrazybrowser:latest
+docker pull ghcr.io/crazystuffofficial/thecrazybrowser:latest
 ```
 
 <p>Now start the docker container, and you are free to view the browser!</p>
 
 ```
-$ docker run -p 8080:8080 ghcr.io/crazystuffofficial/thecrazybrowser
+docker run -p 8080:8080 ghcr.io/crazystuffofficial/thecrazybrowser
 ```
