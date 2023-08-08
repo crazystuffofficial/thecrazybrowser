@@ -19,7 +19,9 @@ cd thecrazybrowser
 <p>Now, install the necessary modules</p>
 
 ```
-npm install
+npm install @tomphttp/bare-server-node
+npm install http
+npm install node-static
 ```
 
 <p>Finally, start the repository, and view on port 8080!</p>
@@ -29,16 +31,3 @@ npm start
 ```
 
 <p>Enjoy!!!</p>
-
-<h2>To use docker, look below here.</h2>
-<p>First, pull the image.</p>
-
-```
-docker pull ghcr.io/crazystuffofficial/thecrazybrowser:latest
-```
-
-<p>Now start the docker container, and you are free to view the browser!</p>
-
-```
-docker run -p 8080:8080 ghcr.io/crazystuffofficial/thecrazybrowser
-```
